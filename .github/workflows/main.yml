@@ -4,11 +4,9 @@ jobs:
     name: build
     runs-on: ubuntu-latest
     steps:
-      - name: check out repository
+      - name: Check out code
         uses: actions/checkout@v2
-      - name: build project
-        container:
-          image: ".devcontainer/Dockerfile"
-          volumes:
-            - .:/srv
-        run: make test
+      - name: Build docker images
+        run: docker build -t local < .devcontainer/Dockerfile
+      - name: Run tests
+        run: docker run -it -v $PWD:/srv -w/srv local make test
