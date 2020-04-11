@@ -1,13 +1,14 @@
 on: push
 jobs:
-    name: build
-    runs-on: ubuntu-latest
-    steps:
-        - name: check out repository
-          uses: actions/checkout@v2
-        - name: build project
-          container:
-            image: '.devcontainer/Dockerfile'
-            volumes:
-                - .:/srv
-            run: make test
+    build:
+        name: build
+        runs-on: ubuntu-latest
+        steps:
+            - name: check out repository
+            uses: actions/checkout@v2
+            - name: build project
+            container:
+                image: '.devcontainer/Dockerfile'
+                volumes:
+                    - .:/srv
+                run: make test
