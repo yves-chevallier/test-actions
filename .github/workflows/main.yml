@@ -5,9 +5,9 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - name: check out repository
-            uses: actions/checkout@v2
+              uses: actions/checkout@v2
             - name: build project
-            container:
+              container:
                 image: '.devcontainer/Dockerfile'
                 volumes:
                     - .:/srv
